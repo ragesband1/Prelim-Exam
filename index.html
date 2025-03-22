@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Bar with Image and Dropdown</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .navbar-logo img {
+            height: 50px; /* I-adjust ang laki ng logo dito */
+            margin-right: 20px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links > li {
+            position: relative; /* Para sa dropdown */
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            border: 2px solid white; /* Border */
+            padding: 8px 15px; /* Spacing sa loob ng mga button */
+            border-radius: 4px; /* Rounded borders */
+            display: inline-block; /* Para maging button look */
+        }
+
+        .nav-links a:hover {
+            background-color: cyan; /* Hover effect */
+            border-color: cyan; /* Border color on hover */
+        }
+
+        .dropdown {
+            display: none; /* Initially hidden */
+            position: absolute; /* Para sa positioning */
+            background-color: #333; /* Background color ng dropdown */
+            padding: 10px 0; /* Spacing */
+            list-style: none;
+            margin: 0;
+            border: 1px solid white; /* Border ng dropdown */
+            z-index: 1000; /* Above other elements */
+        }
+
+        .dropdown li {
+            margin: 0;
+        }
+
+        .dropdown a {
+            white-space: nowrap; /* Para sa mahabang text */
+            padding: 8px 15px; /* Spacing sa dropdown */
+            border: none; /* Walang border */
+        }
+
+        .dropdown a:hover {
+            background-color: cyan; /* Hover effect sa dropdown */
+        }
+
+        /* Show dropdown on hover */
+        .nav-links li:hover .dropdown {
+            display: block; /* Show dropdown */
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .card {
+            transition: transform 0.3s; /* Add a transition effect on hover */
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Slightly enlarges the card on hover */
+        }
+
+        .btn-custom {
+            background-color: blue; /* Blue button */
+            color: white; /* White text */
+        }
+
+        .btn-custom:hover {
+            background-color: cyan; /* Cyan on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="1.JPG.jfif" alt="Logo" />
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+                <ul class="dropdown">
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Our Story</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Services</a>
+                <ul class="dropdown">
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">SEO Services</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+                <ul class="dropdown">
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#">Call Us</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="1.JPG.jfif" class="d-block w-100" alt="Slide 1">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First Slide Label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="2.jpg.jfif" class="d-block w-100" alt="Slide 2">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second Slide Label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="3.jpg.jfif" class="d-block w-100" alt="Slide 3">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third Slide Label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
+    <h1 class="gallery-title">Gallery</h1>
+
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <!-- Row 1 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="1.JPG.jfif" class="card-img-top" alt="Image 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 1 Title</h5>
+                        <p class="card-text">Ito ay isang card na mayroong suportang teksto bilang natural na panimulang pagsasama sa karagdagang nilalaman.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="2.jpg.jfif" class="card-img-top" alt="Image 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 2 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="3.jpg.jfif" class="card-img-top" alt="Image 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 3 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="1.JPG.jfif" class="card-img-top" alt="Image 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 4 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <!-- Row 2 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="2.jpg.jfif" class="card-img-top" alt="Image 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 5 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="3.jpg.jfif" class="card-img-top" alt="Image 6">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 6 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="1.JPG.jfif" class="card-img-top" alt="Image 7">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 7 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="2.jpg.jfif" class="card-img-top" alt="Image 8">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 8 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <!-- Row 3 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="3.jpg.jfif" class="card-img-top" alt="Image 9">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 9 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="1.JPG.jfif" class="card-img-top" alt="Image 10">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 10 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="2.jpg.jfif" class="card-img-top" alt="Image 11">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 11 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="3.jpg.jfif" class="card-img-top" alt="Image 12">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 12 Title</h5>
+                        <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-custom">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+   <!-- Contact Us -->
+<h2 class="text-center">Contact Us</h2>
+
+<!-- Google Maps Embed -->
+<div class="mapouter mb-4">
+    <div class="gmap_canvas">
+        <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=LPU&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+        </iframe>
+    </div>
+    <style>
+        .mapouter {
+            position: relative;
+            text-align: right;
+            width: 100%; /* Pinalitan sa 100% para maging responsive */
+            height: 400px;
+        }
+        .gmap_canvas {
+            overflow: hidden;
+            background: none !important;
+            width: 100%; /* Pinalitan sa 100% para maging responsive */
+            height: 400px;
+        }
+        .gmap_iframe {
+            width: 100% !important; /* Pinalitan sa 100% para maging responsive */
+            height: 400px !important;
+        }
+    </style>
+</div>
+
+<!-- Contact Us Section -->
+<div class="container mb-4">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <form>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" required>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="checkmeOut">
+            <label class="form-check-label" for="checkmeOut">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- My Team Section -->
+<h1 class="myteam-title text-center mb-4">My Team</h1>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <!-- Card 1 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="1.JPG.jfif" class="card-img-top" alt="Image 1">
+                <div class="card-body">
+                    <h5 class="card-title">Card 1 Title</h5>
+                    <p class="card-text">Ito ay isang card na mayroong suportang teksto bilang natural na panimulang pagsasama sa karagdagang nilalaman.</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-custom">Learn More</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="2.jpg.jfif" class="card-img-top" alt="Image 2">
+                <div class="card-body">
+                    <h5 class="card-title">Card 2 Title</h5>
+                    <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-custom">Learn More</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="3.jpg.jfif" class="card-img-top" alt="Image 3">
+                <div class="card-body">
+                    <h5 class="card-title">Card 3 Title</h5>
+                    <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-custom">Learn More</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="1.JPG.jfif" class="card-img-top" alt="Image 4">
+                <div class="card-body">
+                    <h5 class="card-title">Card 4 Title</h5>
+                    <p class="card-text">Ito ay isang card na may suportang teksto.</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-custom">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (Optional) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/2n3T5nl7J7mENq/2v3H7A8ea1B5RFYh5V6N73F" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-2BQKPYiwS7EA3MNiOwzFNBxP4oAJ3BopHTfOeFfxQs3N4k1WjLhhRqD6+0PBUe5T" crossorigin="anonymous"></script>
+
+<!-- Footer with Social Media Icons -->
+<footer class="footer text-center mt-4" style="background-color: #f0f0f0;">
+    <div class="container">
+        <p>Follow us on social media:</p>
+        <a href="https://www.facebook.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://www.linkedin.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn" class="social-icon">
+        </a>
+        <a href="https://www.youtube.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" class="social-icon">
+        </a>
+        <p class="mt-3">© 2025 Your Company. All rights reserved.</p>
+    </div>
+</footer>
+
+<style>
+    /* Custom styles for social media icons */
+    .social-icon {
+        width: 30px;  /* Set the width to your desired size */
+        height: 30px; /* Keep the height consistent */
+        margin: 0 10px; /* Add spacing between icons */
+        transition: opacity 0.3s; /* Optional: smooth hover effect */
+    }
+
+    .social-icon:hover {
+        opacity: 0.7; /* Optional: make icons a bit transparent on hover */
+    }
+
+    /* Styles for the footer */
+    .footer {
+        padding: 20px 0; /* Adds padding for better spacing */
+        color: #333; /* Sets the text color */
+    }
+</style>
+
+<!-- Bootstrap JS and dependencies (Optional) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/2n3T5nl7J7mENq/2v3H7A8ea1B5RFYh5V6N73F" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-2BQKPYiwS7EA3MNiOwzFNBxP4oAJ3BopHTfOeFfxQs3N4k1WjLhhRqD6+0PBUe5T" crossorigin="anonymous"></script>
+</body>
+</html>
